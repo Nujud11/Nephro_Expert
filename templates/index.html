@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eGFR Calculator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
+  <script>
+    function calculateAge() {
+      const birthdayInput = document.getElementById("birthday");
+      const ageDisplay = document.getElementById("ageDisplay");
+      const birthday = new Date(birthdayInput.value);
+      const today = new Date();
+      let age = today.getFullYear() - birthday.getFullYear();
+      const m = today.getMonth() - birthday.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+        age--;
+      }
+      ageDisplay.textContent = isNaN(age) ? "" : "Age: " + age + " years";
+    }
+
+
+    function scrollToElement(id) {
+        const el = document.getElementById(id);
+        if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    function toggleRecommendations() {
+        const box = document.getElementById("recommendationBox");
+        box.style.display = box.style.display === "none" ? "block" : "none";
+        scrollToElement("recommendationBox");
+    }
+  </script>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="navbar-content">
+        <div class="title-group">
+          <img src="{{ url_for('static', filename='images/nephro_logo.png') }}" alt="Logo">
+          <div class="title"><span>NEPHRO</span> Expert</div>
+        </div>
+      
+        <div class="dropdown">
+          <button class="dropbtn">Menu ▼</button>
+          <div class="dropdown-content">
+            <a href="/" class="{% if request.path == '/' %}active-link{% endif %}">Home</a>
+            <a href="/about" class="{% if request.path == '/about' %}active-link{% endif %}">About</a>
+            <a href="/calculator" class="{% if request.path == '/calculator' %}active-link{% endif %}">Calculator</a>
+          </div>
+        </div>
+      </div>
+</div>
+ 
+
+<div class="container">
+  <form class="calculator-form" method="POST" action="/calculator">
+    <h2>eGFR Calculator</h2>
+    <div class="form-grid">
+      <div class="full-width">
+        <label for="birthday">Birthday</label>
+        <input type="date" name="birthday" id="birthday" value="{{ birthday }}" onchange="calculateAge()">
+        <div class="age-display" id="ageDisplay">{% if age %}Age: {{ age }} years{% endif %}</div>
+      </div>
+      <div>
+        <label for="weight">Weight (kg)</label>
+        <input type="number" name="weight" id="weight" value="{{ weight }}" required>
+      </div>
+      <div>
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender">
+          <option value="Male" {% if gender == 'Male' %}selected{% endif %}>Male</option>
+          <option value="Female" {% if gender == 'Female' %}selected{% endif %}>Female</option>
+        </select>
+      </div>
+      <div>
+        <label for="height">Height (cm)</label>
+        <input type="number" name="height" id="height" value="{{ height }}" required>
+      </div>
+      <div>
+        <label for="race">Race</label>
+        <select name="race" id="race">
+          <option value="White" {% if race == 'White' %}selected{% endif %}>White</option>
+          <option value="Other" {% if race == 'Other' %}selected{% endif %}>Other</option>
+          <option value="Black" {% if race == 'Black' %}selected{% endif %}>Black</option>
+        </select>
+      </div>
+      <div>
+        <label for="creatinine">Serum Creatinine (mg/dL)</label>
+        <input type="number" name="creatinine" id="creatinine" step="any" value="{{ creatinine }}" required>
+      </div>
+      <div>
+        <label for="stability">Kidney Function Stability</label>
+        <select name="stability" id="stability">
+          <option value="Stable" {% if stability == 'Stable' %}selected{% endif %}>Stable</option>
+          <option value="Unstable" {% if stability == 'Unstable' %}selected{% endif %}>Unstable</option>
+        </select>
+      </div>
+      <div>
+        <label for="cystatin">Cystatin C (optional)</label>
+        <input type="number" name="cystatin" id="cystatin" step="any" value="{{ cystatin }}">
+      </div>
+      <div>
+        <label for="equation">Preferred Equation (optional)</label>
+        <select name="equation" id="equation">
+          <option value="" {% if not equation %}selected{% endif %}>Auto-select</option>
+          <option value="ckd_epi_creatinine" {% if equation == 'ckd_epi_creatinine' %}selected{% endif %}>CKD-EPI (Creatinine)</option>
+          <option value="ckd_epi_both" {% if equation == 'ckd_epi_both' %}selected{% endif %}>CKD-EPI (Creatinine + Cystatin C)</option>
+          <option value="mdrd" {% if equation == 'mdrd' %}selected{% endif %}>MDRD</option>
+          <option value="cockcroft_gault" {% if equation == 'cockcroft_gault' %}selected{% endif %}>Cockcroft-Gault</option>
+        </select>
+      </div>
+      <div class="full-width">
+        <button type="submit">Calculate</button>
+      </div>
+    </div>
+  </form>
+
+    {% if result %}
+    <div class="result-box" id="resultBox" >
+        <h3 class="result-title">Result</h3>
+        <div class="result-text">{{ result }}</div>
+        {% if reason %}<p><strong>Note:</strong> {{ reason }}</p>{% endif %}
+    </div>
+    
+    <button onclick="toggleRecommendations()" class="recommendation-btn">Get Recommendation</button>
+    {% endif %}
+    <div id="recommendationBox" class="recommendation-section" style="display: none;">
+    <h4>Drug Dose Recommendations</h4>
+
+    {% if recommendations %}
+        <table>
+        <thead>
+            <tr>
+            <th>Drug</th>
+            <th>eGFR Range</th>
+            <th>Recommended Action</th>
+            <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in recommendations %}
+            <tr>
+            <td>{{ item.drug }}</td>
+            <td>{{ item.egfr_range }}</td>
+            <td>{{ item.adjustment }}</td>
+            <td>{{ item.comments }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <div class="note">
+        This recommendation is based on general pharmacokinetic guidelines. Always consult updated references before prescribing.
+        </div>
+    {% else %}
+        <p style="font-size: 16px; color: #777;">
+        No specific dose adjustment recommendations are listed in our database for an eGFR of {{ egfr }} mL/min/1.73m².<br>
+        Please consult current clinical guidelines or a clinical pharmacist for individualized management.
+        </p>
+    {% endif %}
+    </div>
+
+    {% if result %}
+    <script>
+    scrollToElement("resultBox");
+    </script>
+    {% endif %}
+</div>
+
+<div class="green-bar"></div>
+</body>
+</html>
+
+

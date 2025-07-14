@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About | Nephro Expert</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-content">
+      <div class="title-group">
+        <img src="{{ url_for('static', filename='images/nephro_logo.png') }}" alt="Logo">
+        <div class="title"><span>NEPHRO</span> Expert</div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Menu &#9662;</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('landing') }}">Home</a>
+          <a href="{{ url_for('about') }}" class="active-link">About</a>
+          <a href="{{ url_for('index') }}">Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Why <span style="color: #85FDD1;">NEPHRO</span> Expert?</h2>
+    <h2 style="text-align: left;">The GFR Equation Mismatch</h2>
+    <p>
+      Chronic Kidney Disease (CKD) affects millions in Saudi Arabia, with most cases diagnosed at late stages.<br>
+      Accurate GFR measurement is crucial for early detection and proper management.<br>
+      But not all GFR equations are equal — using the wrong one can cause serious medication dosing errors.<br>
+      <strong>One study showed that <strong style="color: #5271FF;"> 50% of patients were misdosed due to equation mismatch,</strong> leading to harmful outcomes. </strong>
+    </p>
+
+    <h2 style="text-align: left;"  > Our Mission </h2>
+    <p>
+      To address the discrepancies between GFR equations in CKD care and introduce a targeted solution that enhances dosing accuracy,<br>
+      reduces patient harm, and supports clinical decision-making.
+    </p>
+
+    <h2 style="text-align: left;" >How NEPHRO Expert Helps</h2>
+    <ul>
+      <li><strong>Smart Equation Selector:</strong> Automatically selects the most suitable GFR equation based on patient data — no guessing, more accuracy.</li>
+      <li><strong>Drug Dosing Recommendations:</strong> Adjusts medication doses based on kidney function, reducing risks of overdose or toxicity.</li>
+      <li><strong>Renal Tracker & Predictor:</strong> Tracks GFR over time and predicts kidney decline early — enabling timely intervention.</li>
+    </ul>
+  </div>
+
+  <div class="green-bar"></div>
+</body>
+</html>

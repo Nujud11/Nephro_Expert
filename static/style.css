@@ -1,0 +1,308 @@
+/* === Base Styles === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+h1 {
+  text-align: left;
+  color: #1c3c65;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* === Navbar === */
+.navbar {
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+}
+
+.title-group {
+  display: flex;
+  align-items: center;
+}
+
+.title-group img {
+  height: 56px;
+  margin-right: 20px;
+  margin-left: -30px;
+}
+
+.title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.title span {
+  color: #85FDD1;
+  font-weight: 700;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.dropbtn {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #333;
+}
+
+.active-link {
+  color: #5271FF !important;
+  font-weight: bold;
+}
+
+/* === Container and Layout === */
+.container {
+  max-width: 1070px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.calculator-form {
+
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 70px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 15px;
+  color: #333;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.age-display {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #5271FF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin:auto;
+  display:block;
+  width: 300px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2d528a;
+}
+
+/* === Result & Recommendation Boxes === */
+.result-box,
+.recommendation-section {
+  background-color: #ffffff;
+  padding: 30px;
+  margin: 40px auto 0 auto;
+  border-radius: 10px;
+  border-left: 5px solid #85FDD1;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.result-title {
+  color: black !important;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.result-text {
+  white-space: pre-line;
+  font-size: 16px;
+}
+
+.note {
+  margin-top: 20px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+.recommendation-btn {
+  margin-top: 30px;
+  background-color: #5271FF;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* === Table Styling === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #5271FF;
+  color: white;
+}
+
+/* === Footer === */
+.green-bar {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #85FDD1;
+}
+
+/* === Landing Page Specific === */
+.landing-content {
+  height: 85vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: relative;
+}
+
+.text-content {
+  max-width: 70%;
+}
+
+.landing-content h1 {
+  font-size: 4rem;
+  margin: 0;
+  color: black;
+}
+
+.landing-content p {
+  font-size: 1.6rem;
+  color: #111;
+  margin-top: 10px;
+}
+
+/* === Arrow Button === */
+.arrow-button {
+  width: 180px;
+  height: 80px;
+  border: 6px solid #5271FF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.arrow-button:hover {
+  background-color: rgba(82, 113, 255, 0.4);
+}
+
+.arrow-button svg {
+  width: 70px;
+  height: 70px;
+  stroke: #5271FF;
+  stroke-width: 3;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .logo {
+    width: 90px;
+  }
+}

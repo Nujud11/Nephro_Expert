@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nephro Expert</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+  <!-- شريط علوي -->
+  <div class="navbar">
+    <div class="navbar-content">
+        <div class="title-group">
+          <img src="{{ url_for('static', filename='images/nephro_logo.png') }}" alt="Logo">
+          <div class="title"><span>NEPHRO</span> Expert</div>
+        </div>
+      
+        <div class="dropdown">
+          <button class="dropbtn">Menu ▼</button>
+          <div class="dropdown-content">
+            <a href="/" class="{% if request.path == '/' %}active-link{% endif %}">Home</a>
+            <a href="/about" class="{% if request.path == '/about' %}active-link{% endif %}">About</a>
+            <a href="/calculator" class="{% if request.path == '/calculator' %}active-link{% endif %}">Calculator</a>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- محتوى الصفحة -->
+  <div class="landing-content">
+    <div class="text-content">
+      <h1>NEPHRO</h1>
+      <h1>EXPERT</h1>
+      <p>Empowering clinicians and patients with reliable eGFR calculations</p>
+    </div>
+  
+    <form action="{{ url_for('index') }}">
+      <button class="arrow-button" type="submit">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#5271FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>            
+      </button>
+    </form>
+  
+    <div class="green-bar"></div>
+  </div>
+  
+
+</body>
+</html>

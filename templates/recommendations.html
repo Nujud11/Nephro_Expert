@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drug Recommendations</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 40px 0; background-color: #f7f7f7; display: flex; justify-content: center; }
+    .container { width: 90%; max-width: 800px; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+    h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #3498db; color: white; }
+    .note { margin-top: 20px; color: #7f8c8d; font-size: 0.9em; }
+    a.back-link { display: inline-block; margin-top: 20px; color: #3498db; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Drug Dose Recommendations</h1>
+  
+  <p><strong>Patient's eGFR:</strong> {{ egfr }} mL/min/1.73m²</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Drug</th>
+        <th>eGFR Range</th>
+        <th>Recommended Action</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in recommendations %}
+      <tr>
+        <td>{{ item.drug }}</td>
+        <td>{{ item.egfr_range }}</td>
+        <td>{{ item.adjustment }}</td>
+        <td>{{ item.comments }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="note">This recommendation is based on general pharmacokinetic guidelines. Always refer to clinical judgment and updated references before prescribing.</div>
+  
+  <a href="/" class="back-link">&#8592; Back to Calculator</a>
+</div>
+
+</body>
+</html>
