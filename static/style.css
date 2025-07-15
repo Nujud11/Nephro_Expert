@@ -311,7 +311,7 @@ th {
   /* Navbar */
   .navbar-content {
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     padding: 10px;
   }
 
@@ -321,6 +321,7 @@ th {
   }
 
   .dropdown {
+    align-items: right;
     margin-left: 0;
     margin-top: 10px;
   }
@@ -344,7 +345,7 @@ th {
     flex-direction: column;
     padding: 10px;
     height: auto;
-    text-align: center;
+    text-align: left;
     gap: 20px;
   }
 
