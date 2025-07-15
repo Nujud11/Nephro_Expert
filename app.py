@@ -6,7 +6,8 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load drug data from Excel
-EXCEL_PATH = "static/drug_data.xlsx"  # you must save My 10 drugs.xlsx as this file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+EXCEL_PATH = os.path.join(BASE_DIR, 'static', 'drug_data.xlsx')
 
 try:
     drug_df = pd.read_excel(EXCEL_PATH)
