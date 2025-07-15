@@ -311,8 +311,8 @@ th {
   /* Navbar */
   .navbar-content {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
+    align-items: center;
+    padding: 10px;
   }
 
   .dropbtn {
@@ -320,16 +320,32 @@ th {
     padding: 8px;
   }
 
+  .dropdown {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
   .dropdown-content {
     min-width: 100%;
+  }
+
+  /* Logo and title */
+  .title-group img {
+    height: 40px;
+    margin: 0 10px 0 0;
+  }
+
+  .title {
+    font-size: 1rem;
   }
 
   /* Landing Page */
   .landing-content {
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     height: auto;
     text-align: center;
+    gap: 20px;
   }
 
   .text-content {
@@ -337,21 +353,22 @@ th {
   }
 
   .landing-content h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .landing-content p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .arrow-button {
-    width: 120px;
-    height: 60px;
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
   }
 
   .arrow-button svg {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   /* Calculator Form */
