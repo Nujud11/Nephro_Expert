@@ -23,7 +23,7 @@ Python, Flask, HTML/CSS, Pandas/OpenPyXL
 ## Run Locally
 ```bash
 git clone https://github.com/<your-username>/nephro-expert.git
-cd nephro-expert
+cd Nephro_Expert
 python -m venv venv
 source venv/bin/activate  # mac/linux
 pip install -r requirements.txt
