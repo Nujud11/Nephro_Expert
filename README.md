@@ -27,5 +27,4 @@ cd Nephro_Expert
 python -m venv venv
 source venv/bin/activate  # mac/linux
 pip install -r requirements.txt
-cp .env.example .env
 python app.py
