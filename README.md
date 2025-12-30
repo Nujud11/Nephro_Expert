@@ -16,10 +16,6 @@ So the idea of this project is to help the docotors to easly know which one is t
 ## Tech Stack
 Python, Flask, HTML/CSS, Pandas/OpenPyXL
 
-## Demo
-- Live: https://nephro-expert.onrender.com
-- Screen Recocrding: https://github.com/user-attachments/assets/9f7a175b-09e6-4db6-8309-6f82f62d2079
-
 ## Run Locally
 ```bash
 git clone https://github.com/<your-username>/Nephro_Expert.git
@@ -28,3 +24,12 @@ python -m venv venv
 source venv/bin/activate  # mac/linux
 pip install -r requirements.txt
 python app.py
+```
+
+
+## Demo
+- Live: https://nephro-expert.onrender.com
+- Screen Recocrding:
+
+https://github.com/user-attachments/assets/9f7a175b-09e6-4db6-8309-6f82f62d2079 
+
